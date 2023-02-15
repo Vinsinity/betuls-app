@@ -37,7 +37,7 @@
                                     <thead>
                                     <tr>
                                         <th>Order</th>
-                                        <th>Date</th>
+                                        <th>Last Action Date</th>
                                         <th>Status </th>
                                         <th>Total Quantity</th>
                                         <th>Total Price</th>
@@ -47,7 +47,7 @@
                                     @foreach($orders as $order)
                                         <tr>
                                             <td>
-                                                <a href="#">#{{ str_pad($order->order_number,7,'0',STR_PAD_LEFT) }}</a>
+                                                <a href="{{ route('account.orders.show', ['number' => $order->order_number]) }}">#{{ str_pad($order->order_number,7,'0',STR_PAD_LEFT) }}</a>
                                             </td>
                                             <td>
                                                 {{ $order->created_at }}
@@ -59,7 +59,7 @@
                                                 {{ $order->total_quantity }}
                                             </td>
                                             <td>
-                                                {{ $order->total_price }}
+                                                {{ $order->showOrderTotalPrice() }}
                                             </td>
 
                                         </tr>
@@ -67,7 +67,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-
+                                {!! $orders->render() !!}
                             </div>
                         </div>
                         <!-- card-body .// -->

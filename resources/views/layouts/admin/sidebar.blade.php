@@ -15,14 +15,14 @@
                     <li class="{{ request()->routeIs('admin.dashboard.index') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
                             <i class="bx bx-home-alt" aria-hidden="true"></i>
-                            <span>Dashboard</span>
+                            <span>@lang('dashboard.static.dashboard')</span>
                         </a>
                     </li>
                     <li class="nav-group-label">Orders</li>
                     <li class="{{ request()->routeIs('admin.orders.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.orders.list') }}">
                             <i class="bx bx-category-alt" aria-hidden="true"></i>
-                            <span>Orders</span>
+                            <span>@lang('dashboard.static.orders')</span>
                         </a>
                     </li>
 {{--                    <li class="">--}}
@@ -31,7 +31,7 @@
 {{--                            <span>Payment Errors</span>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-                    <li class="nav-group-label">Product</li>
+                    <li class="nav-group-label">@lang('dashboard.static.products')</li>
 {{--                    <li class="nav-parent {{ request()->routeIs('admin.products.products.*') ? 'nav-expanded nav-active' : '' }}">--}}
 {{--                        <a class="nav-link" href="#">--}}
 {{--                            <i class="bx bx-unite" aria-hidden="true"></i>--}}
@@ -90,34 +90,34 @@
 {{--                            </li>--}}
 {{--                        </ul>--}}
 {{--                    </li>--}}
-                    <li class="{{ request()->routeIs('admin.products.products.*') ? 'nav-active' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.products.products.list') }}">
+                    <li class="{{ request()->routeIs('admin.product.products.*') ? 'nav-active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.product.products.list') }}">
                             <i class="bx bx-unite" aria-hidden="true"></i>
-                            <span>Products</span>
+                            <span>@lang('dashboard.static.products')</span>
                         </a>
                     </li>
-                    <li class="{{ request()->routeIs('admin.products.categories.*') ? 'nav-active' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.products.categories.list') }}">
+                    <li class="{{ request()->routeIs('admin.product.categories.*') ? 'nav-active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.product.categories.list') }}">
                             <i class="bx bx-category-alt" aria-hidden="true"></i>
-                            <span>Category</span>
+                            <span>@lang('dashboard.static.categories')</span>
                         </a>
                     </li>
-                    <li class="{{ request()->routeIs('admin.products.brands.*') ? 'nav-active' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.products.brands.list') }}">
+                    <li class="{{ request()->routeIs('admin.product.brands.*') ? 'nav-active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.product.brands.list') }}">
                             <i class="bx bxs-component" aria-hidden="true"></i>
-                            <span>Brand</span>
+                            <span>@lang('dashboard.static.brands')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxs-message-alt-dots" aria-hidden="true"></i>
-                            <span>Comments</span>
+                            <span>@lang('dashboard.static.comments')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxs-star-half" aria-hidden="true"></i>
-                            <span>Reviews</span>
+                            <span>@lang('dashboard.static.reviews')</span>
                         </a>
                     </li>
 {{--                    <li class="{{ request()->routeIs('admin.products.brands.list') ? 'nav-active' : '' }}">--}}
@@ -126,39 +126,39 @@
 {{--                            <span>Variants<em class="not-included">(Coming soon)</em></span>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-                    <li class="nav-group-label">User</li>
+                    <li class="nav-group-label">@lang('dashboard.static.users')</li>
                     <li class="{{ request()->routeIs('admin.users.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="{{route('admin.users.list')}}">
                             <i class="bx bx-user" aria-hidden="true"></i>
-                            <span>Users</span>
+                            <span>@lang('dashboard.static.users')</span>
                         </a>
                     </li>
                     <li class="{{ request()->routeIs('admin.users.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="">
                             <i class="bx bx-envelope" aria-hidden="true"></i>
-                            <span>Bulk Mail</span>
+                            <span>@lang('dashboard.static.bulk_mail')</span>
                         </a>
                     </li>
                     <li class="{{ request()->routeIs('admin.users.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="">
                             <i class="bx bx-podcast" aria-hidden="true"></i>
-                            <span>Advices</span>
+                            <span>@lang('dashboard.static.advices')</span>
                         </a>
                     </li>
                     <li class="{{ request()->routeIs('admin.users.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="">
                             <i class="bx bx-cabinet" aria-hidden="true"></i>
-                            <span>Newsletter</span>
+                            <span>@lang('dashboard.static.newsletter')</span>
                         </a>
                     </li>
 
 {{--                    <li class="nav-group-label">Cargo</li>--}}
 
-                    <li class="nav-group-label">Campaign</li>
+                    <li class="nav-group-label">@lang('dashboard.static.campaign')</li>
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
                             <i class="bx bxs-discount" aria-hidden="true"></i>
-                            <span>Campaign</span>
+                            <span>@lang('dashboard.static.campaign')</span>
                         </a>
                         <ul class="nav nav-children">
                             <li class="">
@@ -186,20 +186,20 @@
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bx-code-block" aria-hidden="true"></i>
-                            <span>Campaign Code</span>
+                            <span>@lang('dashboard.static.campaign_code')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxs-package" aria-hidden="true"></i>
-                            <span>Cargo Campaign</span>
+                            <span>@lang('dashboard.static.cargo_campaign')</span>
                         </a>
                     </li>
-                    <li class="nav-group-label">Integration</li>
+                    <li class="nav-group-label">@lang('dashboard.static.integrations')</li>
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
                             <i class="bx bx-export" aria-hidden="true"></i>
-                            <span>Export/Import</span>
+                            <span>@lang('dashboard.static.export_import')</span>
                         </a>
                         <ul class="nav nav-children">
                             <li class="">
@@ -217,7 +217,7 @@
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
                             <i class="bx bxs-store-alt" aria-hidden="true"></i>
-                            <span>Marketplaces</span>
+                            <span>@lang('dashboard.static.marketplaces')</span>
                         </a>
                         <ul class="nav nav-children">
                             <li class="">
@@ -240,7 +240,7 @@
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
                             <i class="bx bxs-spreadsheet" aria-hidden="true"></i>
-                            <span>E-Invoices</span>
+                            <span>@lang('dashboard.static.e_invoices')</span>
                         </a>
                         <ul class="nav nav-children">
                             <li class="">
@@ -261,80 +261,80 @@
                         </ul>
                     </li>
 
-                    <li class="nav-group-label">Statics</li>
+                    <li class="nav-group-label">@lang('dashboard.static.statics')</li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxs-report" aria-hidden="true"></i>
-                            <span>Sales Reports</span>
+                            <span>@lang('dashboard.static.sales_reports')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxs-bar-chart-alt-2" aria-hidden="true"></i>
-                            <span>Products Raports</span>
+                            <span>@lang('dashboard.static.products_reports')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxs-user-detail" aria-hidden="true"></i>
-                            <span>Users Raports</span>
+                            <span>@lang('dashboard.static.users_reports')</span>
                         </a>
                     </li>
-                    <li class="nav-group-label">Drop shipping</li>
+                    <li class="nav-group-label">@lang('dashboard.static.drop_shipping')</li>
                     <li class="disabled">
                         <a class="nav-link disabled" href="">
                             <i class="bx bx-dumbbell" aria-hidden="true"></i>
-                            <span>Coming soon</span>
+                            <span>@lang('dashboard.static.coming_soon')</span>
                         </a>
                     </li>
-                    <li class="nav-group-label">Contents</li>
+                    <li class="nav-group-label">@lang('dashboard.static.contents')</li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bx-book-content" aria-hidden="true"></i>
-                            <span>Pages</span>
+                            <span>@lang('dashboard.static.pages')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bxl-blogger" aria-hidden="true"></i>
-                            <span>Blogs</span>
+                            <span>@lang('dashboard.static.blogs')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bx-film" aria-hidden="true"></i>
-                            <span>Graphics</span>
+                            <span>@lang('dashboard.static.graphics')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bx-receipt" aria-hidden="true"></i>
-                            <span>Ads</span>
+                            <span>@lang('dashboard.static.ads')</span>
                         </a>
                     </li>
                     <li class="">
                         <a class="nav-link" href="">
                             <i class="bx bx-slideshow" aria-hidden="true"></i>
-                            <span>Slides</span>
+                            <span>@lang('dashboard.static.slides')</span>
                         </a>
                     </li>
-                    <li class="nav-group-label">Settings</li>
+                    <li class="nav-group-label">@lang('dashboard.static.settings')</li>
                     <li class="{{ request()->routeIs('admin.settings.company.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="{{route('admin.settings.company.setting')}}">
                             <i class="bx bx-building" aria-hidden="true"></i>
-                            <span>Company Description</span>
+                            <span>@lang('dashboard.static.company_description')</span>
                         </a>
                     </li>
                     <li class="{{ request()->routeIs('admin.settings.cargos.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="{{route('admin.settings.cargos.list')}}">
                             <i class="bx bxs-truck" aria-hidden="true"></i>
-                            <span>Cargos</span>
+                            <span>@lang('dashboard.static.cargos')</span>
                         </a>
                     </li>
                     <li class="{{ request()->routeIs('admin.settings.seo.*') ? 'nav-active' : '' }}">
                         <a class="nav-link" href="{{route('admin.settings.seo.setting')}}">
                             <i class="bx bx-space-bar" aria-hidden="true"></i>
-                            <span>SEO</span>
+                            <span>@lang('dashboard.static.seo')</span>
                         </a>
                     </li>
                 </ul>

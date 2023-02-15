@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'tax' => 0,
+    'tax' => config('app.tax'),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,9 +70,9 @@ return [
 
         'decimals' => 2,
 
-        'decimal_point' => '.',
+        'decimal_point' => ',',
 
-        'thousand_separator' => ',',
+        'thousand_separator' => '.',
 
     ],
 

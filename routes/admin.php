@@ -39,7 +39,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/',[DashboardController::class,'index'])->name('index');
         });
 
-        Route::prefix('products')->name('products.')->group(function () {
+        Route::prefix('product')->name('product.')->group(function () {
             Route::prefix('products')->name('products.')->group(function () {
                 Route::get('list',[ProductController::class,'list'])->name('list');
                 Route::get('add',[ProductController::class,'add'])->name('add');
@@ -53,6 +53,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('add',[CategoryController::class,'add'])->name('add');
                 Route::post('add',[CategoryController::class,'addPost'])->name('addPost');
                 Route::post('image',[CategoryController::class,'image'])->name('image');
+                Route::get('show/{slug}', [CategoryController::class, 'show'])->name('show');
+                Route::post('update/{slug}', [CategoryController::class,'update'])->name('update');
             });
             Route::prefix('brands')->name('brands.')->group(function () {
                 Route::get('list',[BrandController::class,'list'])->name('list');

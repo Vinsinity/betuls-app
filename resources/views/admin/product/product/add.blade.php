@@ -25,7 +25,7 @@
     </div>
 @endif
 <!-- start: page -->
-<form class="betuls-product-form action-buttons-fixed" action="{{ route('admin.products.products.addPost') }}" method="post">
+<form class="betuls-product-form action-buttons-fixed" action="{{ route('admin.product.products.addPost') }}" method="post">
     @csrf
     <div class="row mt-2">
         <div class="col">
@@ -41,13 +41,13 @@
                             <div class="form-group row align-items-center pb-3">
                                 <label for="name" class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Product Name</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    <input type="text" class="form-control form-control-modern" name="name" id="name" value="" required />
+                                    <input type="text" class="form-control form-control-modern" name="name" id="name" value="{{ old('name') }}" required />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="detail" class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Product Description</label>
                                 <div class="col-lg-7 col-xl-6">
-                                    <textarea class="form-control form-control-modern" name="detail" id="detail" rows="6" required></textarea>
+                                    <textarea class="form-control form-control-modern" name="detail" id="detail" rows="6" required>{{ old('detail') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -56,7 +56,7 @@
                                     <select class="form-control mb-3" name="brand_id" id="brand_id" required>
                                         <option disabled>Choose here</option>
                                         @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            <option value="{{ $brand->id }}" {{ $brand->id == old('brand_id') ? 'selected' : '' }}>{{ $brand->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -137,9 +137,11 @@
 {{--                                        </div>--}}
 {{--                                    </div>--}}
                                     <div class="form-group row align-items-center">
-                                        <label for="price" class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sale Price ($)</label>
+                                        <label for="price" class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Sale Price ({{ config('app.currency_sign') }})</label>
                                         <div class="col-lg-7 col-xl-6">
                                             <input type="text" class="form-control form-control-modern" name="price" id="price" value="" required />
+                                            <input type="checkbox" name="withTax[]" id="withTax">
+                                            <label for="withTax">With Tax</label>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,4 @@
-@extends('layouts.admin.app', ['title' => 'Order #'.str_pad($order->order_number,7,'0',STR_PAD_LEFT)])
+@extends('layouts.admin.app', ['title' => trans('order.list.order_number').' #'.str_pad($order->order_number,7,'0',STR_PAD_LEFT)])
 @section('content')
     <!-- start: page -->
 {{--    <div class="row">--}}
@@ -207,11 +207,11 @@
         <div class="col">
             <div class="card card-modern">
                 <div class="card-body">
-                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-print" aria-hidden="true"></i> Fatura Yazdır</button>
-                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-print" aria-hidden="true"></i> Sipariş Yazdır</button>
-                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-envelope" aria-hidden="true"></i> Mesaj Gönder</button>
-                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-sms" aria-hidden="true"></i> SMS Gönder</button>
-                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-undo" aria-hidden="true"></i> İptal/İade</button>
+                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-print" aria-hidden="true"></i> @lang('order.show.print_bill')</button>
+                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-print" aria-hidden="true"></i> @lang('order.show.print_order')</button>
+                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-envelope" aria-hidden="true"></i> @lang('order.show.send_message')</button>
+                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-sms" aria-hidden="true"></i> @lang('order.show.send_sms')</button>
+                    <button type="button" class="mb-1 mt-1 me-1 btn btn-default"><i class="fa fa-undo" aria-hidden="true"></i> @lang('order.show.cancel_refund')</button>
                 </div>
             </div>
         </div>
@@ -222,14 +222,14 @@
             <div class="col-xl-7 mb-4 mb-xl-0">
                 <div class="card card-modern">
                     <div class="card-header">
-                        <h2 class="card-title">General</h2>
+                        <h2 class="card-title">@lang('dashboard.static.general')</h2>
                     </div>
                     <div class="card-body">
                         <div class="form-row">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group col mb-3">
-                                        <label for="order_status_id">Status</label>
+                                        <label for="order_status_id">@lang('order.list.status')</label>
                                         <select class="form-control form-control-modern" name="order_status_id" id="order_status_id" required>
                                             @foreach($order_statuses as $status)
                                                 <option value="{{ $status->id }}" {{ $status->id == $order->order_status_id ? 'selected' : ''}}>
@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group col mb-3">
-                                        <label for="cargo_id">Cargo</label>
+                                        <label for="cargo_id">@lang('dashboard.static.cargo')</label>
                                         <select class="form-control form-control-modern" name="cargo_id" id="cargo_id" required>
                                             @foreach($cargos as $cargo)
                                                 <option value="{{ $cargo->id }}" {{ $cargo->id == $order->cargo_id ? 'selected' : ''}}>
@@ -253,7 +253,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-group col mb-3">
-                                        <label for="tracking_number">Tracking Number</label>
+                                        <label for="tracking_number">@lang('dashboard.static.tracking_number')</label>
                                         <input class="form-control form-control-modern" id="tracking_number" name="tracking_number" value="{{ $order->tracking_number }}" />
                                     </div>
                                 </div>
@@ -266,16 +266,16 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group col mb-3">
-                                        <label for="user_name">Customer</label>
+                                        <label for="user_name">@lang('order.list.customer_name')</label>
                                         <input class="form-control form-control-modern" id="user_name" value="{{ $order->user->name }}" disabled/>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <label>Date Created</label>
+                                    <label>@lang('dashboard.static.created_at')</label>
                                     <input type="text" class="form-control form-control-modern" value="{{ $order->createDateFull() }}"  disabled/>
                                 </div>
                                 <div class="col">
-                                    <label>Date Updated</label>
+                                    <label>@lang('order.list.update_date')</label>
                                     <input type="text" class="form-control form-control-modern" value="{{ $order->updateDateFull() }}"  disabled/>
                                 </div>
                             </div>
@@ -308,12 +308,12 @@
 
                 <div class="card card-modern h-100">
                     <div class="card-header">
-                        <h2 class="card-title">Addresses</h2>
+                        <h2 class="card-title">@lang('order.show.addresses')</h2>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-auto me-xl-5 pe-xl-5 mb-4 mb-xl-0">
-                                <h3 class="text-color-dark font-weight-bold text-4 line-height-1 mt-0 mb-3">BILLING</h3>
+                                <h3 class="text-color-dark font-weight-bold text-4 line-height-1 mt-0 mb-3">@lang('order.show.billing')</h3>
                                 <ul class="list list-unstyled list-item-bottom-space-0">
                                     <li>{{ $order->address->title }}</li>
                                     <li>{{ $order->address->name.' '.$order->address->surname }}</li>
@@ -328,7 +328,7 @@
                                 <a href="tel:+5551234" class="text-color-dark">{{ $order->address->phone_number }}</a>
                             </div>
                             <div class="col-xl-auto ps-xl-5">
-                                <h3 class="font-weight-bold text-color-dark text-4 line-height-1 mt-0 mb-3">SHIPPING</h3>
+                                <h3 class="font-weight-bold text-color-dark text-4 line-height-1 mt-0 mb-3">@lang('order.show.shipping')</h3>
                                 <ul class="list list-unstyled list-item-bottom-space-0">
                                     <li>{{ $order->shippingAddress->title }}</li>
                                     <li>{{ $order->shippingAddress->name.' '.$order->shippingAddress->surname }}</li>
@@ -339,7 +339,7 @@
                                 </ul>
 {{--                                <strong class="d-block text-color-dark">Email address:</strong>--}}
 {{--                                <a href="mailto:johndoe@domain.com">johndoe@domain.com</a>--}}
-                                <strong class="d-block text-color-dark mt-3">Phone:</strong>
+                                <strong class="d-block text-color-dark mt-3">@lang('dashboard.static.phone'):</strong>
                                 <a href="tel:+5551234" class="text-color-dark">{{ $order->shippingAddress->phone_number }}</a>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
 
                 <div class="card card-modern">
                     <div class="card-header">
-                        <h2 class="card-title">Products</h2>
+                        <h2 class="card-title">@lang('dashboard.static.products')</h2>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -361,10 +361,10 @@
                                 <thead>
                                 <tr>
                                     <th width="8%" class="ps-4">#</th>
-                                    <th width="65%">Name</th>
-                                    <th width="5%" class="text-end">Cost</th>
-                                    <th width="7%" class="text-end">Qty</th>
-                                    <th width="5%" class="text-end">Total</th>
+                                    <th width="65%">@lang('order.show.product_name')</th>
+                                    <th width="5%" class="text-end">@lang('order.show.cost')</th>
+                                    <th width="7%" class="text-end">@lang('order.show.quantity')</th>
+                                    <th width="5%" class="text-end">@lang('order.show.total')</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -372,9 +372,9 @@
                                     <tr>
                                         <td class="ps-4"><strong>{{ $loop->iteration }}</strong></td>
                                         <td><strong>{{ $orderProduct->product->name }}</strong></td>
-                                        <td class="text-end">₺{{ $orderProduct->price }}</td>
+                                        <td class="text-end">{{ $orderProduct->showPrice() }}</td>
                                         <td class="text-end">{{ $orderProduct->quantity }}</td>
-                                        <td class="text-end">₺{{ number_format($orderProduct->price * $orderProduct->quantity,2,'.','') }}</td>
+                                        <td class="text-end">{{ $orderProduct->showPriceTotal() }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -383,25 +383,33 @@
 
                         <div class="row justify-content-end flex-column flex-lg-row my-3">
                             <div class="col-auto me-5">
-                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">Items Subtotal</h3>
+                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">@lang('order.show.items_subtotal')</h3>
                                 <span class="d-flex align-items-center">
-													{{ count($order->products) }} Items
+													{{ $order->total_quantity }} Items
 													<i class="fas fa-chevron-right text-color-primary px-3"></i>
-													<b class="text-color-dark text-xxs">₺{{ $order->products->sum('price') }}</b>
+													<b class="text-color-dark text-xxs">{{ $order->showSubtotalPrice() }}</b>
 												</span>
                             </div>
                             <div class="col-auto me-5">
-                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">Shipping</h3>
+                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">@lang('order.show.shipping')</h3>
                                 <span class="d-flex align-items-center">
 													Flat Rate
 													<i class="fas fa-chevron-right text-color-primary px-3"></i>
-													<b class="text-color-dark text-xxs">₺{{ $order->cargo_price }}</b>
+													<b class="text-color-dark text-xxs">{{ $order->showCargoPrice() }}</b>
+												</span>
+                            </div>
+                            <div class="col-auto me-5">
+                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">@lang('dashboard.static.tax')</h3>
+                                <span class="d-flex align-items-center">
+													Tax Rate
+													<i class="fas fa-chevron-right text-color-primary px-3"></i>
+													<b class="text-color-dark text-xxs">{{ $order->showTax() }}</b>
 												</span>
                             </div>
                             <div class="col-auto">
-                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">Order Total</h3>
+                                <h3 class="font-weight-bold text-color-dark text-4 mb-3">@lang('order.show.order_total')</h3>
                                 <span class="d-flex align-items-center justify-content-lg-end">
-													<strong class="text-color-dark text-5">₺{{ number_format($order->total_price + $order->cargo_price,2,'.','') }}</strong>
+													<strong class="text-color-dark text-5">{{ $order->showOrderTotalPrice() }}</strong>
 												</span>
                             </div>
                         </div>
@@ -410,58 +418,56 @@
 
             </div>
         </div>
-        <div class="row">
-            <div class="col">
+        @livewire('admin.order.note-component', ['order' => $order])
+{{--        <div class="row">--}}
+{{--            <div class="col">--}}
 
-                <div class="card card-modern">
-                    <div class="card-header">
-                        <h2 class="card-title">Order Notes</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="ecommerce-timeline mb-3">
-                            <div class="ecommerce-timeline-items-wrapper">
-                                <div class="ecommerce-timeline-item">
-                                    <small>added on June 26, 2020 at 4:01 pm by admin - <a href="#" class="text-color-danger">Delete note</a></small>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit augue at leo viverra, aliquam egestas lectus laoreet. Donec vehicula vestibulum ipsum, tincidunt ultrices elit suscipit ac. Sed eget risus laoreet, varius nibh id, luctus ligula. Nulla facilisi</p>
-                                </div>
-                                <div class="ecommerce-timeline-item">
-                                    <small>added on June 26, 2020 at 4:01 pm by admin - <a href="#" class="text-color-danger">Delete note</a></small>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit augue at leo viverra, aliquam egestas lectus laoreet. Donec vehicula vestibulum ipsum, tincidunt ultrices elit suscipit ac. Sed eget risus laoreet, varius nibh id, luctus ligula. Nulla facilisi</p>
-                                </div>
-                                <div class="ecommerce-timeline-item">
-                                    <small>added on June 26, 2020 at 4:01 pm by admin - <a href="#" class="text-color-danger">Delete note</a></small>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit augue at leo viverra, aliquam egestas lectus laoreet. Donec vehicula vestibulum ipsum, tincidunt ultrices elit suscipit ac. Sed eget risus laoreet, varius nibh id, luctus ligula. Nulla facilisi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col pb-1 mb-3">
-                                <label>Add Note</label>
-                                <textarea class="form-control form-control-modern" rows="6"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col">
-                                <a href="#" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Add Note</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="card card-modern">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h2 class="card-title">@lang('order.show.order_notes') - {{ $order->notes->count() }}</h2>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        <div class="ecommerce-timeline mb-3">--}}
+{{--                            @if($order->notes->count())--}}
+{{--                            <div class="ecommerce-timeline-items-wrapper">--}}
+{{--                                @foreach($order->notes as $note)--}}
+{{--                                    <div class="ecommerce-timeline-item">--}}
+{{--                                        @dd($note->author->name)--}}
+{{--                                        <small>{{ $note->created_at }} by {{ $note->author->name }} - <a href="#" class="text-color-danger">Delete note</a></small>--}}
+{{--                                        <p>{{ $note->note }}</p>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
+{{--                        <div class="form-row">--}}
+{{--                            <div class="form-group col pb-1 mb-3">--}}
+{{--                                <label>@lang('order.show.order_note')</label>--}}
+{{--                                <textarea class="form-control form-control-modern" rows="6"></textarea>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-row">--}}
+{{--                            <div class="form-group col">--}}
+{{--                                <a href="#" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">@lang('order.show.add_order_note')</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-            </div>
-        </div>
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="row action-buttons">
             <div class="col-12 col-md-auto">
                 <button type="submit" class="submit-button btn btn-primary btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1" data-loading-text="Loading...">
-                    <i class="bx bx-save text-4 me-2"></i> Save Order
+                    <i class="bx bx-save text-4 me-2"></i> @lang('order.list.save_order')
                 </button>
             </div>
             <div class="col-12 col-md-auto px-md-0 mt-3 mt-md-0">
-                <a href="ecommerce-orders-list.html" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">Cancel</a>
+                <a href="ecommerce-orders-list.html" class="cancel-button btn btn-light btn-px-4 py-3 border font-weight-semibold text-color-dark text-3">@lang('dashboard.static.cancel')</a>
             </div>
             <div class="col-12 col-md-auto ms-md-auto mt-3 mt-md-0 ms-auto">
                 <a href="#" class="delete-button btn btn-danger btn-px-4 py-3 d-flex align-items-center font-weight-semibold line-height-1">
-                    <i class="bx bx-trash text-4 me-2"></i> Delete Order
+                    <i class="bx bx-trash text-4 me-2"></i> @lang('order.list.delete_order')
                 </a>
             </div>
         </div>

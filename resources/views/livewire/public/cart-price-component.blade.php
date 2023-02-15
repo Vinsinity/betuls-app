@@ -11,7 +11,7 @@
             <span>Order Note :</span>
             <textarea></textarea>
         </div>
-        <a href="#">Proceed To Checkout</a>
+        <a href="{{route('cart.checkout')}}">Proceed To Checkout</a>
     </div>
     <!-- /.cart-subtotal -->
 </div>

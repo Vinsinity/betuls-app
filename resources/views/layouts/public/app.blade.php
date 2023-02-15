@@ -112,7 +112,7 @@
                         @foreach($categories as $category)
                             @if(count($category->children) > 0 )
                                 <li class="has-child">
-                                    <a href="{{ route('categories.show', ['slug' => $category->slug]) }}">{{ $category->name }}</a>
+                                    <a href="{{ route('categories.show', ['slug' => $category->slug]) }}" class="{{ url()->current() == route('categories.show', ['slug' => $category->slug]) ? 'active' : 'z' }}">{{ $category->name }}</a>
                                     <ul class="sub-menu">
                                         @foreach($category->children as $children)
                                             <li><a href="{{ route('categories.show', ['slug' => $children->slug]) }}">{{ $children->name }}</a></li>
@@ -120,7 +120,8 @@
                                     </ul>
                                 </li>
                             @else
-                                <li><a href="{{ route('categories.show', ['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
+{{--                                @dd(Route::current())--}}
+                                <li><a href="{{ route('categories.show', ['slug' => $category->slug]) }}" class="{{ url()->current() == route('categories.show', ['slug' => $category->slug]) ? 'active' : '' }}">{{ $category->name }}</a></li>
                             @endif
                         @endforeach
                     </ul>

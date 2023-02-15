@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('layouts.admin.app', ['title' => trans('dashboard.static.dashboard')])
 @push('stylesheet')
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/morris/morris.css') }}" />
 <link rel="stylesheet" href="{{ asset('admin/assets/vendor/datatables/media/css/dataTables.bootstrap5.css') }}" />

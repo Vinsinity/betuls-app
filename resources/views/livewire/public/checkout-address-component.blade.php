@@ -5,7 +5,7 @@
                 <div class="col-md-4 col-lg-4 col-sm-4">
 
                     <label>
-                        <input type="radio" name="address" wire:change="addressSelected({{ $address }})" class="card-input-element" />
+                        <input type="radio" name="address" wire:change="addressSelected({{ $address }})" class="card-input-element" {{ $loop->iteration == 1 ? 'checked' : '' }} />
 
                         <div class="card card-default card-input">
                             <div class="card-header">{{ $address->title }}</div>

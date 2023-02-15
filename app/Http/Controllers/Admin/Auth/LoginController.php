@@ -39,7 +39,7 @@ class LoginController extends Controller
             }
         }
 
-        return redirect(route('admin.auth.login'))->withErrors('Login details are not valid');
+        return redirect(route('admin.auth.login'))->withErrors(trans('auth.failed'));
     }
 
     public function logout() {

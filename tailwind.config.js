@@ -4,9 +4,7 @@ module.exports = {
         require('./vendor/wireui/wireui/tailwind.config.js')
     ],
   content: [
-      './vendor/wireui/wireui/resources/**/*.blade.php',
-      './vendor/wireui/wireui/ts/**/*.ts',
-      './vendor/wireui/wireui/stc/**/*.php'
+      './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/tailwind.blade.php'
   ],
   theme: {
     extend: {},

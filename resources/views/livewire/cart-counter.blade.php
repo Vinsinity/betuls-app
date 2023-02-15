@@ -17,27 +17,27 @@
                     <a href="#"><i class="fa fa-times"></i></a>
                 </div>
             @endforeach
+            <div class="cart-bottom">
+                <div class="cart-sub-total">
+                    <p>Sub-Total <span>₺{{ Cart::subtotal() }}</span></p>
+                </div>
+                <div class="cart-sub-total">
+                    <p>Eco Tax ({{ number_format(config('app.tax'),2,',','.') }})<span>₺{{ Cart::tax() }}</span></p>
+                </div>
+                <div class="cart-sub-total">
+                    <p>Total <span>₺{{ Cart::total() }}</span></p>
+                </div>
+                <div class="cart-checkout">
+                    <a href="{{ route('cart.cart') }}"><i class="fa fa-shopping-cart"></i>View Cart</a>
+                </div>
+                <div class="cart-share">
+                    <a href="{{ route('cart.checkout') }}"><i class="fa fa-share"></i>Checkout</a>
+                </div>
+            </div>
         @else
-            <div class="single-cart">
-                Ürün Yok
+            <div class="single-cart text-center mb-0">
+                Sepette ürün Yok
             </div>
         @endif
-        <div class="cart-bottom">
-            <div class="cart-sub-total">
-                <p>Sub-Total <span>₺{{ Cart::subtotal() }}</span></p>
-            </div>
-            <div class="cart-sub-total">
-                <p>Eco Tax (18.00)<span>₺{{ Cart::tax() }}</span></p>
-            </div>
-            <div class="cart-sub-total">
-                <p>Total <span>₺{{ Cart::total() }}</span></p>
-            </div>
-            <div class="cart-checkout">
-                <a href="{{ route('cart.cart') }}"><i class="fa fa-shopping-cart"></i>View Cart</a>
-            </div>
-            <div class="cart-share">
-                <a href="{{ route('cart.checkout') }}"><i class="fa fa-share"></i>Checkout</a>
-            </div>
-        </div>
     </div>
 </li>

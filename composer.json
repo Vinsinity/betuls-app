@@ -16,7 +16,8 @@
         "livewire/livewire": "^2.11",
         "orangehill/iseed": "^3.0",
         "spatie/laravel-sluggable": "^3.4",
-        "wireui/wireui": "^1.17"
+        "wireui/wireui": "^1.17",
+        "joedixon/laravel-translation": "dev-master"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -59,6 +60,12 @@
             "dont-discover": []
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:eduPHP/laravel-translation.git"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

@@ -177,7 +177,7 @@
                                         </div>
                                         <div class="mid-wrapper">
                                             <h5 class="pro-title"><a href="{{ route('product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a></h5>
-                                            <span>₺{{ $product->price }}</span>
+                                            <span>{{ $product->showPrice() }}</span>
                                         </div>
 
                                         <div class="pro-icon">

@@ -48,37 +48,41 @@
                             </div>
                         </div>
 
-                        <table class="table table-ecommerce-simple table-borderless table-striped mb-0" id="datatable-ecommerce-list" style="min-width: 640px;">
+                        <table class="table table-ecommerce-simple table-borderless table-striped mb-0" id="datatable-ecommerce-list">
 
                             <thead>
                                 <tr>
                                     <th width="3%"><input type="checkbox" name="select-all" class="select-all checkbox-style-1 p-relative top-2" value="" /></th>
-                                    <th width="8%">ID</th>
-                                    <th width="28%">Customer Name</th>
-                                    <th width="18%">Date</th>
-                                    <th width="18%">Total</th>
-                                    <th width="15%">Status</th>
+                                    <th width="3%">ID</th>
+                                    <th>Customer Name</th>
+                                    <th width="10%">Date</th>
+                                    <th width="10%">Status</th>
+                                    <th width="8%">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
                                     @foreach($users as $user)
-                                        <td width="30">
-                                            <input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" />
-                                        </td>
-                                        <td>
-                                            <a href="ecommerce-orders-detail.html"><strong>191</strong></a>
-                                        </td>
-                                        <td>
-                                            <a href="ecommerce-orders-detail.html"><strong>{{ $user->name }}</strong></a>
-                                        </td>
-                                        <td>Nov 21, 2019</td>
-                                        <td>$200</td>
-                                        <td>
-                                            <span class="ecommerce-status on-hold">On Hold</span>
-                                        </td>
+                                        <tr>
+                                            <td width="30">
+                                                <input type="checkbox" name="checkboxRow1" class="checkbox-style-1 p-relative top-2" value="" />
+                                            </td>
+                                            <td>
+                                                {{ $user->id }}
+                                            </td>
+                                            <td>
+                                                {{ $user->name }}
+                                            </td>
+                                            <td>{{ $user->created_at }}</td>
+{{--                                            <td>$200</td>--}}
+                                            <td>
+                                                <span class="ecommerce-status active">Active</span>
+                                            </td>
+                                            <td>
+                                                <a href="" type="button" class="mb-1 mt-1 me-1 btn btn-primary"><i class="bx bx-pencil"></i></a>
+                                                <a class="mb-1 mt-1 me-1 modal-basic btn btn-default btn-danger"><i class="bx bx-trash"></i></a>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                </tr>
                             </tbody>
                         </table>
                         <hr class="solid mt-5 opacity-4">

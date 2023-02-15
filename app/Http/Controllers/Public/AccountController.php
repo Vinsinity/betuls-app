@@ -22,6 +22,12 @@ class AccountController extends Controller
         return view('public.account.order-history', compact('orders'));
     }
 
+    public function order($number)
+    {
+        $order = Order::where('order_number', $number)->first();
+        return view('public.account.order', compact('order'));
+    }
+
     public function addresses() {
 
     }

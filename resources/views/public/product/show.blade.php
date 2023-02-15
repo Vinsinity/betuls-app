@@ -55,7 +55,7 @@
                             <div class="product-details">
                                 <h5 class="pro-title"><a href="#">{{ $product->name }}</a></h5>
                                 <div class="quantity">Stock: {{ $product->stock }}</div>
-                                <span class="price">Price : {{ $product->price }}₺</span>
+                                <span class="price">Price : {{ $product->showPrice() }}</span>
 {{--                                <div class="size-variation">--}}
 {{--                                    <span>size :</span>--}}
 {{--                                    <select name="size-value">--}}

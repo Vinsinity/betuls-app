@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('product_id')->unsigned();
 
             $table->integer('quantity');
-            $table->decimal('price',14);
+            $table->integer('price');
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onDelete('cascade');

@@ -8,7 +8,7 @@
 @section('content')
     <!-- start: page -->
 {{--    // ecommerce-form for jquery upload--}}
-    <form class="brand-form action-buttons-fixed" action="{{ route('admin.products.brands.addPost') }}" method="post">
+    <form class="brand-form action-buttons-fixed" action="{{ route('admin.product.brands.addPost') }}" method="post">
         @csrf
         <div class="row mt-2">
             <div class="col">

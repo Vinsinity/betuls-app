@@ -51,4 +51,17 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class,'product_categories')->withTimestamps();
     }
+
+    public function showPrice(): string
+    {
+        $priceWithoutTax = $this->attributes['price'] / 100;
+        $taxRate = config('app.tax') / 100;
+        $price = ($priceWithoutTax * $taxRate) + $priceWithoutTax;
+        return config('app.currency_sign').number_format($price,2,',','.');
+    }
+
+    public function priceWithTax()
+    {
+        return $this->attributes['price'] + round(($this->attributes['price'] * config('app.tax')) / 100, 2);
+    }
 }

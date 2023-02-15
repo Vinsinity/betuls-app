@@ -8,7 +8,7 @@
 @section('content')
     <!-- start: page -->
 {{--    // ecommerce-form for jquery upload--}}
-    <form class="action-buttons-fixed" action="{{ route('admin.products.categories.addPost') }}" method="post">
+    <form class="action-buttons-fixed" action="{{ route('admin.product.categories.addPost') }}" method="post">
         @csrf
 {{--        <div class="row mt-2">--}}
 {{--            <div class="col">--}}
@@ -60,18 +60,18 @@
 {{--                                        <input type="text" class="form-control form-control-modern" name="slug" value="" required />--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
-                                <div class="form-group row align-items-center mb-3">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Parent Category</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <input type="text" class="form-control form-control-modern" name="categoryParent" value="" />
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Description</label>
-                                    <div class="col-lg-7 col-xl-6">
-                                        <textarea class="form-control form-control-modern" name="categoryDescription" rows="6"></textarea>
-                                    </div>
-                                </div>
+{{--                                <div class="form-group row align-items-center mb-3">--}}
+{{--                                    <label class="col-lg-5 col-xl-3 control-label text-lg-end mb-0">Parent Category</label>--}}
+{{--                                    <div class="col-lg-7 col-xl-6">--}}
+{{--                                        <input type="text" class="form-control form-control-modern" name="categoryParent" value="" />--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-group row">--}}
+{{--                                    <label class="col-lg-5 col-xl-3 control-label text-lg-end pt-2 mt-1 mb-0">Description</label>--}}
+{{--                                    <div class="col-lg-7 col-xl-6">--}}
+{{--                                        <textarea class="form-control form-control-modern" name="categoryDescription" rows="6"></textarea>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
                     </div>

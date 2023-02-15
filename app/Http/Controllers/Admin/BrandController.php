@@ -41,7 +41,7 @@ class BrandController extends Controller
         $validated = $request->validated();
 //        dd($validated);
         Brand::create($validated);
-        return redirect(route('admin.products.brands.add'))->with('success','success');
+        return redirect(route('admin.product.brands.add'))->with('success','success');
     }
 
     /**

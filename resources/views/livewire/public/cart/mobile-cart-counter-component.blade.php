@@ -20,7 +20,7 @@
                 <p>Sub-Total <span>₺{{ Cart::subtotal() }}</span></p>
             </div>
             <div class="cart-sub-total">
-                <p>Eco Tax (18.00)<span>₺{{ Cart::tax() }}</span></p>
+                <p>Eco Tax ({{ number_format(config('app.tax'),2,',','.') }})<span>₺{{ Cart::tax() }}</span></p>
             </div>
             <div class="cart-sub-total">
                 <p>Total <span>₺{{ Cart::total() }}</span></p>

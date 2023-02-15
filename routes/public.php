@@ -30,9 +30,14 @@ Route::prefix('cart')->name('cart.')->group(function () {
     Route::get('cart', [CartController::class, 'cart'])->name('cart');
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
 });
-Route::prefix('account')->name('account.')->group(function () {
-    Route::get('/', [AccountController::class,'profile'])->name('profile');
-    Route::get('orders', [AccountController::class,'orders'])->name('orders');
+Route::middleware('auth')->group(function () {
+    Route::prefix('account')->name('account.')->group(function () {
+        Route::get('/', [AccountController::class,'profile'])->name('profile');
+        Route::prefix('orders')->name('orders.')->group(function () {
+            Route::get('/', [AccountController::class,'orders'])->name('list');
+            Route::get('/{number}', [AccountController::class, 'order'])->name('show');
+        });
+    });
 });
 Auth::routes();
 

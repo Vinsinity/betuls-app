@@ -23,8 +23,8 @@ return new class extends Migration
             $table->json('cart_content');
 
             $table->string('order_number');
-            $table->decimal('total_price',14);
-            $table->decimal('cargo_price',14);
+            $table->integer('total_price');
+            $table->integer('cargo_price');
             $table->integer('total_quantity');
             $table->string('tracking_number');
 

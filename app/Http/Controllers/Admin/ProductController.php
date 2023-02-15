@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Brand\ImageRequest;
 use App\Http\Requests\Admin\Product\StoreRequest;
@@ -45,6 +46,7 @@ class ProductController extends Controller
      */
     public function addPost(StoreRequest $request) {
         $product = $request->except('image', 'categories');
+        $product['price'] = $request->has('withTax') ? Helper::calculatePriceWithTaxForDatabase($product['price']) : Helper::calculatePriceForDatabase($product['price']);
         $images = $request->get('image');
         $product = Product::create($product);
 
@@ -57,7 +59,7 @@ class ProductController extends Controller
             $product_image['image'] = $image;
             ProductImage::create($product_image);
         }
-        return redirect(route('admin.products.products.list'))->with('success', 'Success product add');
+        return redirect(route('admin.product.products.list'))->with('success', 'Success product add');
     }
 
     /**
@@ -83,6 +85,6 @@ class ProductController extends Controller
         $product = Product::where('slug', $request->slug)->first();
         $validated = $request->validated();
         $product->update($validated);
-        return redirect(route('admin.products.products.list'))->with('success', $product->name.' successful updated');
+        return redirect(route('admin.product.products.list'))->with('success', $product->name.' successful updated');
     }
 }

@@ -32,7 +32,7 @@
         </div>
     @endif
     <!-- start: page -->
-    <form class="betuls-product-form action-buttons-fixed" action="{{ route('admin.products.products.update', ['slug' => $product->slug]) }}" method="post">
+    <form class="betuls-product-form action-buttons-fixed" action="{{ route('admin.product.products.update', ['slug' => $product->slug]) }}" method="post">
         @csrf
         <div class="row mt-2">
             <div class="col">

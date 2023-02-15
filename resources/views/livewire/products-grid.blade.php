@@ -17,7 +17,7 @@
                                 <li><i class="fas fa-circle"></i></li>
                             </ul>
                         </div>
-                        <p>{{ $product->categories[0]->name }} / <span>{{ $product->price }}</span></p>
+                        <p>{{ $product->categories[0]->name }} / <span>{{ $product->showPrice() }}</span></p>
                     </div>
                     <div class="icon-wrapper">
                         <div class="pro-icon">

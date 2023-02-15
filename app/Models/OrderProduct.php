@@ -17,4 +17,26 @@ class OrderProduct extends Model
     {
         return $this->hasOne(Product::class,'id','product_id');
     }
+
+    public function showPrice(): string
+    {
+        $priceWithoutTax = $this->attributes['price'] / 100;
+        return config('app.currency_sign').number_format($priceWithoutTax,2,',','.');
+    }
+
+    public function showPriceWithTax(): string
+    {
+        $priceWithoutTax = $this->attributes['price'] / 100;
+        $taxRate = config('app.tax') / 100;
+        $price = ($priceWithoutTax * $taxRate) + $priceWithoutTax;
+        return config('app.currency_sign').number_format($price,2,',','.');
+    }
+
+    public function showPriceTotal(): string
+    {
+        $priceWithoutTax = $this->attributes['price'];
+        $quantity = $this->attributes['quantity'];
+        $price = ($priceWithoutTax * $quantity) / 100;
+        return config('app.currency_sign').number_format($price,2,',','.');
+    }
 }

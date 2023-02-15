@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('stock')->default(0);
-            $table->decimal('price',14);
+            $table->integer('price');
             $table->text('detail');
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->timestamps();

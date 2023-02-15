@@ -12,7 +12,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','order_number','order_status_id','cargo_id','total_price','total_quantity','user_address_id','shipping_address_id','tracking_number'];
+    protected $fillable = ['user_id','order_number','order_status_id','cargo_id','total_price','subtotal_price','total_quantity','user_address_id','shipping_address_id','tracking_number'];
 
     public function products(): HasMany
     {
@@ -39,9 +39,19 @@ class Order extends Model
         return $this->hasOne(UserAddress::class,'id','user_address_id');
     }
 
+    public function notes(): HasMany
+    {
+        return $this->hasMany(OrderNote::class);
+    }
+
     public function shippingAddress(): HasOne
     {
         return $this->hasOne(UserAddress::class,'id','shipping_address_id');
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(ProductReview::class,'order_id','id');
     }
 
     public function getCreatedAtAttribute(): string
@@ -51,7 +61,32 @@ class Order extends Model
 
     public function getUpdatedAtAttribute(): string
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d F Y');
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->translatedFormat('d F Y');
+    }
+
+    public function showTotalPrice(): string
+    {
+        return config('app.currency_sign').number_format(($this->attributes['total_price'] / 100),2,',','.');
+    }
+
+    public function showSubtotalPrice(): string
+    {
+        return config('app.currency_sign').number_format(($this->attributes['subtotal_price'] / 100),2,',','.');
+    }
+
+    public function showCargoPrice(): string
+    {
+        return config('app.currency_sign').number_format(($this->attributes['cargo_price'] / 100),2,',','.');
+    }
+
+    public function showTax(): string
+    {
+        return config('app.currency_sign').number_format(($this->attributes['total_price'] - $this->attributes['subtotal_price']) / 100,2,',','.');
+    }
+
+    public function showOrderTotalPrice(): string
+    {
+        return config('app.currency_sign').number_format(($this->attributes['total_price'] + $this->attributes['cargo_price']) / 100,2,',','.');
     }
 
     public function createDateFull(): string
@@ -66,6 +101,6 @@ class Order extends Model
 
     public function getPriceAttribute(): string
     {
-        return number_format($this->attributes['price'],2,'.','');
+        return number_format($this->attributes['price'],2,',','.');
     }
 }

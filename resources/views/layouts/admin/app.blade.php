@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     @stack('basics')
 
-    <title>{{ ucfirst(trans($title)) }} | Betuls Admin Panel</title>
+    <title>{{ $title }} | Betuls Admin Panel</title>
     <meta name="keywords" content="Betuls Admin Panel" />
     <meta name="description" content="Betuls Admin Panel">
     <meta name="author" content="betuls.com.tr">
@@ -51,6 +51,8 @@
     <!-- Head Libs -->
     <script src="{{ asset('admin/assets/vendor/modernizr/modernizr.js') }}"></script>
     @stack('headLibs')
+
+    @livewireStyles
 </head>
 <body>
 <section class="body">
@@ -98,6 +100,6 @@
 
 <!-- Examples -->
 @stack('examplesJs')
-
+@livewireScripts
 </body>
 </html>

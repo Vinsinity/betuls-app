@@ -25,9 +25,18 @@ class ProductsGrid extends Component
     public function addToCart($id) {
 //        dd(notify()->success('Sepete eklendi.'));
         $product = Product::findOrFail($id);
-        Cart::add($product->id,$product->name,1,$product->price,0,['image' => $product->images[0]->image]);
+        Cart::add($product->id,$product->name,1,$product->price / 100,0,['image' => $product->images[0]->image]);
         $this->emit('cart_update');
         $this->notification()->success('Okey','okey okey okey');
+        $this->dispatchBrowserEvent('cartadd:success', [
+            'message' => $product->name.' Cart added successfully'
+        ]);
+    }
+
+    public function addCart($product)
+    {
+        Cart::add($product->id,$product->name,1,$product->price / 100,0,['image' => $product->images[0]->image]);
+        $this->emit('cart_update');
         $this->dispatchBrowserEvent('cartadd:success', [
             'message' => $product->name.' Cart added successfully'
         ]);

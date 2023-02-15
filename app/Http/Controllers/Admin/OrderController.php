@@ -11,14 +11,12 @@ use Illuminate\Support\Carbon;
 class OrderController extends Controller
 {
     public function list() {
-        $orders = Order::paginate(12);
-        $title = 'orders';
-        return view('admin.order.list', compact('orders','title'));
+        $orders = Order::orderBy('created_at','desc')->paginate(12);
+        return view('admin.order.list', compact('orders'));
     }
 
     public function show($number)
     {
-//        Carbon::setLocale('tr');
         $order = Order::where('order_number',$number)->first();
         return view('admin.order.show',compact('order'));
     }

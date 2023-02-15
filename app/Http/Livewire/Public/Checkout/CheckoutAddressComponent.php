@@ -8,10 +8,13 @@ use App\Models\District;
 use App\Models\Neighborhood;
 use App\Models\UserAddress;
 use Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
 class CheckoutAddressComponent extends Component
 {
+
+    public $cartTotal;
 
     public $title;
     public $name;
@@ -35,6 +38,7 @@ class CheckoutAddressComponent extends Component
     {
         $user = Auth::user();
         $cities = City::all();
+        $this->cartTotal = Cart::total();
         return view('livewire.public.checkout-address-component', compact('user','cities'));
     }
 

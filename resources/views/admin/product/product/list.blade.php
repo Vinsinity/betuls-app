@@ -28,7 +28,7 @@
                             <div class="row align-items-center mb-3">
 
                                 <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                                    <a href="{{ route('admin.products.products.add') }}" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+ Add Product</a>
+                                    <a href="{{ route('admin.product.products.add') }}" class="btn btn-primary btn-md font-weight-semibold btn-py-2 px-4">+ Add Product</a>
                                 </div>
 
                                 <div class="col-8 col-lg-auto ms-auto ml-auto mb-3 mb-lg-0">
@@ -86,9 +86,9 @@
                                 <tr>
                                     <td class="text-center"><strong>{{ $product->id }}</strong></td>
                                     <td><img width="100%" src="{{ asset(Storage::url('image/products/'.$product->images[0]->image)) }}" alt=""></td>
-                                    <td><a href="{{ route('admin.products.products.show', ['slug' => $product->slug]) }}"><strong>{{ $product->name }}</strong></a></td>
+                                    <td><a href="{{ route('admin.product.products.show', ['slug' => $product->slug]) }}"><strong>{{ $product->name }}</strong></a></td>
                                     <td>{{ $product->brand->name }}</td>
-                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->showPrice() }}</td>
                                     <td>{{ date('d.m.Y H:m:s', strtotime($product->created_at)) }}</td>
                                     <td>{{ date('d.m.Y H:m:s', strtotime($product->updated_at)) }}</td>
                                     <td>

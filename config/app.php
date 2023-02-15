@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'tr',
 
     /*
     |--------------------------------------------------------------------------
@@ -213,5 +213,13 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ])->toArray(),
+
+    'price_format' => [
+        'decimals' => 2,
+        'decimal_point' => ',',
+        'thousand_separator' => '.',
+    ],
+    'tax' => 18,
+    'currency_sign' => '₺'
 
 ];
